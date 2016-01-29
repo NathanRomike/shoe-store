@@ -12,9 +12,9 @@ public class Brand {
     return mName;
   }
 
-  // public int getId() {
-  //   return mId;
-  // }
+  public int getId() {
+    return mId;
+  }
 
   public Brand (String name) {
     this.mName = name;
