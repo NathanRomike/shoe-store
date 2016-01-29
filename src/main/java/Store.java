@@ -89,17 +89,6 @@ public class Store {
     }
   }
 
-  public static List<Store> search(String searchInput) {
-    String sql = "SELECT stores.id AS mId, stores.store_name AS mName FROM stores " +
-                 "INNER JOIN store_brand AS s_b ON stores.id = s_b.store_id " +
-                 "INNER JOIN brands ON brands.id = s_b.brand_id WHERE brands.brand_name LIKE :name";
-    try(Connection con = DB.sql2o.open()) {
-      return con.createQuery(sql)
-        .addParameter("name", "%"+searchInput+"%")
-        .executeAndFetch(Store.class);
-    }
-  }
-
   public void assign(Brand brand) {
     String sql = "INSERT INTO store_brand (store_id, brand_id) VALUES (:storeId, :brandId)";
     try(Connection con = DB.sql2o.open()) {
@@ -107,6 +96,17 @@ public class Store {
         .addParameter("storeId", this.mId)
         .addParameter("brandId", brand.getId())
         .executeUpdate();
+    }
+  }
+
+  public static List<Store> search(String searchInput) {
+    String sql = "SELECT stores.id AS mId, stores.store_name AS mName FROM stores " +
+    "INNER JOIN store_brand AS s_b ON stores.id = s_b.store_id " +
+    "INNER JOIN brands ON brands.id = s_b.brand_id WHERE brands.brand_name LIKE :name";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql)
+      .addParameter("name", "%"+searchInput+"%")
+      .executeAndFetch(Store.class);
     }
   }
 }

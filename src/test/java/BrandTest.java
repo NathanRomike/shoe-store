@@ -70,4 +70,21 @@ public class BrandTest {
     newBrand.delete();
     assertEquals(0, newBrand.all().size());
   }
+
+  @Test
+  public void brand_getStoresFromBrandMethod_getStores() {
+    Brand newBrand = new Brand("Glo");
+    newBrand.save();
+    assertEquals(0, newBrand.getStores().size());
+  }
+
+  // @Test
+  // public void brand_assignStoreToBrand_assign() {
+  //   Brand brand = new Brand("Glo");
+  //   brand.save();
+  //   Store store = new Store("Gloria's Shoes.");
+  //   store.save();
+  //   brand.assign(store);
+  //   assertEquals(1, brand.getStores)
+  // }
 }
