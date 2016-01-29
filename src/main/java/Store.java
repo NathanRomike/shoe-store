@@ -41,7 +41,7 @@ public class Store {
 
   public void save() {
     String sql = "INSERT INTO stores(store_name) VALUES (:name)";
-    try (Connection con = DB.sql2o.open()) {
+    try(Connection con = DB.sql2o.open()) {
       this.mId = (int) con.createQuery(sql, true)
         .addParameter("name", this.mName)
         .executeUpdate()
