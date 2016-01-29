@@ -2,12 +2,23 @@ import org.junit.*;
 import static org.junit.Assert.*;
 import org.junit.Rule;
 import java.util.List;
+import java.util.Arrays;
 
 public class StoreTest {
 
   @Rule
   public DatabaseRule database = new DatabaseRule();
 
+  @Test
+  public void store_allMethodWorking_all() {
+    Store firstStore = new Store("Shoes and Junk, Inc.");
+    firstStore.save();
+    Store secondStore = new Store("Gloria's Shoes.");
+    secondStore.save();
+    Store [] allStores = new Store [] {firstStore, secondStore};
+    assertTrue(Store.all().containsAll(Arrays.asList(allStores)));
+  }
+  
   @Test
   public void store_emptyAtFirst_all() {
     assertEquals(Store.all().size(), 0);
