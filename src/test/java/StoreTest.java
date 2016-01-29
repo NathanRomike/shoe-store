@@ -9,7 +9,14 @@ public class StoreTest {
   public DatabaseRule database = new DatabaseRule();
 
   @Test
-  public void all_emptyAtFirst_all() {
+  public void store_emptyAtFirst_all() {
     assertEquals(Store.all().size(), 0);
+  }
+
+  @Test
+  public void store_createNewStoreWorking_save() {
+    Store newStore = new Store("Shoes and Junk!");
+    newStore.save();
+    assertTrue(newStore instanceof Store);
   }
 }
