@@ -77,4 +77,15 @@ public class Brand {
         .executeUpdate();
     }
   }
+
+  public List<Store> getStores() {
+    String sql = "SELECT stores.id AS mId, stores.store_name AS mName FROM brands " +
+                 "INNER JOIN store_brand AS s_b ON brands.id = s_b.brand_id INNER JOIN " +
+                 "stores ON stores.id = s_b.store_id WHERE brands.id = :id";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql)
+        .addParameter("id", this.mId)
+        .executeAndFetch(Store.class);
+    }
+  }
 }
