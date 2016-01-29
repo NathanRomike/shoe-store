@@ -33,4 +33,15 @@ public class Store {
         .getKey();
     }
   }
+
+  @Override
+  public boolean equals(Object otherStore) {
+    if (!(otherStore instanceof Store)) {
+      return false;
+    } else {
+      Store newStore = (Store) otherStore;
+      return this.getName().equals(newStore.getName()) &&
+        this.getId() == newStore.getId();
+    }
+  }
 }
