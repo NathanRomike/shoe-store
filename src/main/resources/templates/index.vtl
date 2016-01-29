@@ -5,7 +5,7 @@
   <div class="form-group">
     <p>Add a shoe brand:</p>
     <div class="input-group">
-      <input type="text" class="form-control" name="newBrand" id="newBrand" placeholder="Nike?">
+      <input type="text" class="form-control" name="newBrand" id="newBrand" placeholder="Converse">
       <span class="input-group-btn">
         <button type="submit" class="btn btn-default" name="Brandbutton">Add Brand</button>
       </span>
@@ -16,7 +16,7 @@
   <div class="form-group">
     <p>Add a new store:</p>
     <div class="input-group">
-      <input type="text" class="form-control" name="newStore" id="newStore" placeholder="">
+      <input type="text" class="form-control" name="newStore" id="newStore" placeholder="Shoe Store">
       <span class="input-group-btn">
         <button type="submit" class="btn btn-default" name="Storebutton">Add Store</button>
       </span>
@@ -27,15 +27,13 @@
   <p>Current Brands Stocked:</p>
   <ul class="list-group">
     #foreach ($brand in $brands)
-      <li class="list-group-item"><a href="/Brands/$brand.getId()">$brand.getName()</a></li>
+      <a class="list-group-item" href="/Brands/$brand.getId()">$brand.getName()</a>
     #end
   </ul>
 #end
 #if ($stores)
-  <p>Your Stores:</p>
-  <ul class="list-group">
+  <p>Your Stores: <small>(Current Stock)</small></p>
     #foreach ($store in $stores)
-      <li class="list-group-item"><a href="/Stores/$store.getId()">$store.getName()</a><span class="badge">$store.getBrands().size()</span></li>
+      <a class="list-group-item" href="/Stores/$store.getId()">$store.getName()<span class="badge">$store.getBrands().size()</span></a>
     #end
-  </ul>
 #end

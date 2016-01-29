@@ -43,4 +43,16 @@ public class AppTest extends FluentTest {
     submit("Storebutton");
     assertThat(pageSource()).contains("ABC Shoes");
   }
+
+  @Test
+  public void specificStorePageListsBrandsInStore() {
+    Store store = new Store("Gloria's Shoes");
+    store.save();
+    Brand brand = new Brand("Glos");
+    brand.save();
+    brand.assign(store);
+    goTo("http://localhost:4567/");
+    click("a", withText("Gloria's Shoes"));
+    assertThat(pageSource()).contains("Glos");
+  }
 }
