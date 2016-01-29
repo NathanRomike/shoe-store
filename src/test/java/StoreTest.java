@@ -9,7 +9,7 @@ public class StoreTest {
   public DatabaseRule database = new DatabaseRule();
 
   @Test
-  public void all_emptyAtFirst() {
+  public void all_emptyAtFirst_all() {
     assertEquals(Store.all().size(), 0);
   }
 }
