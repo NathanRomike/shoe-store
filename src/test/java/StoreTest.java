@@ -48,4 +48,12 @@ public class StoreTest {
     Store savedStore = Store.find(newStore.getId());
     assertTrue(newStore.equals(savedStore));
   }
+
+  @Test
+  public void store_updateMethodWorking_update() {
+    Store newStore = new Store("Shoes and Junk, Inc.");
+    newStore.save();
+    newStore.update("Gloria's Shoes and Junk, Inc.");
+    assertEquals("Gloria's Shoes and Junk, Inc.", newStore.getName());
+  }
 }
