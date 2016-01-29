@@ -46,4 +46,12 @@ public class BrandTest {
     newBrand.save();
     assertEquals(newBrand.getId(), newBrand.getId());
   }
+
+  @Test
+  public void brand_findMethodWorking_find() {
+    Brand newBrand = new Brand("Glo");
+    newBrand.save();
+    Brand savedStore = Brand.find(newBrand.getId());
+    assertTrue(newBrand.equals(savedStore));
+  }
 }

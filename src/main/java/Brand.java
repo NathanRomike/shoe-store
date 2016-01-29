@@ -49,5 +49,12 @@ public class Brand {
     }
   }
 
-
+  public static Brand find(int id) {
+    String sql = "SELECT id AS mId, brand_name AS mName FROM brands WHERE id = :id";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetchFirst(Brand.class);
+    }
+  }
 }
