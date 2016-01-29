@@ -20,15 +20,15 @@ public class StoreTest {
   }
 
   @Test
+  public void store_emptyAtFirst_all() {
+    assertEquals(Store.all().size(), 0);
+  }
+
+  @Test
   public void store_getIdWorking_getId() {
     Store newStore = new Store("Shoes and Junk!");
     newStore.save();
     assertEquals(newStore.getId(), newStore.getId());
-  }
-
-  @Test
-  public void store_emptyAtFirst_all() {
-    assertEquals(Store.all().size(), 0);
   }
 
   @Test
