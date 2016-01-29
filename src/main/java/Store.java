@@ -102,7 +102,7 @@ public class Store {
 
   public void assign(Brand brand) {
     String sql = "INSERT INTO store_brand (store_id, brand_id) VALUES (:storeId, :brandId)";
-    try(Connection con = DB,sql2o.open()) {
+    try(Connection con = DB.sql2o.open()) {
       con.createQuery(sql)
         .addParameter("storeId", this.mId)
         .addParameter("brandId", brand.getId())
