@@ -19,4 +19,14 @@ public class Store {
         .executeAndFetch(Store.class);
     }
   }
+
+  public void save() {
+    try (Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO stores(store_name) VALUES (:name)";
+      this.mId = (int) con.createQuery(sql, true)
+        .addParameter("name", this.mName)
+        .executeUpdate()
+        .getKey();
+    }
+  }
 }
