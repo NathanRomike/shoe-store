@@ -12,6 +12,10 @@ public class Store {
     return mName;
   }
 
+  public int getId() {
+    return mId;
+  }
+  
   public Store (String name) {
     this.mName = name;
   }

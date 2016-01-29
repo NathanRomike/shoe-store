@@ -24,7 +24,7 @@ public class StoreTest {
   public void store_getIdWorking_getId() {
     Store newStore = new Store("Shoes and Junk!");
     newStore.save();
-    assertEquals("Shoes and Junk!", Store.getId().get(0).getName())
+    assertEquals("Shoes and Junk!", newStore.getId().getName());
   }
 
   @Test
