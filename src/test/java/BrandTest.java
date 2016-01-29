@@ -39,4 +39,11 @@ public class BrandTest {
     newBrand.save();
     assertEquals("Glo", newBrand.getName());
   }
+
+  @Test
+  public void brand_getIdWorking_getId() {
+    Brand newBrand = new Brand("Glo");
+    newBrand.save();
+    assertEquals(newBrand.getId(), newBrand.getId());
+  }
 }
