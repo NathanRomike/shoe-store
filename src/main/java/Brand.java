@@ -57,4 +57,15 @@ public class Brand {
         .executeAndFetchFirst(Brand.class);
     }
   }
+
+  public void update(String newName) {
+    this.mName = newName;
+    String sql = "UPDATE brands SET brand_name = :name WHERE id = :id";
+    try(Connection con = DB.sql2o.open()) {
+      con.createQuery(sql)
+        .addParameter("name", newName)
+        .addParameter("id", mId)
+        .executeUpdate();
+    }
+  }
 }
