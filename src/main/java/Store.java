@@ -15,10 +15,21 @@ public class Store {
   public int getId() {
     return mId;
   }
-  
+
   public Store (String name) {
     this.mName = name;
   }
+
+  @Override
+    public boolean equals(Object otherStore) {
+      if (!(otherStore instanceof Store)) {
+        return false;
+      } else {
+        Store newStore = (Store) otherStore;
+        return this.getName().equals(newStore.getName()) &&
+               this.getId() == newStore.getId();
+      }
+    }
 
   public static List<Store> all() {
     try (Connection con = DB.sql2o.open()) {
@@ -35,17 +46,6 @@ public class Store {
         .addParameter("name", this.mName)
         .executeUpdate()
         .getKey();
-    }
-  }
-
-  @Override
-  public boolean equals(Object otherStore) {
-    if (!(otherStore instanceof Store)) {
-      return false;
-    } else {
-      Store newStore = (Store) otherStore;
-      return this.getName().equals(newStore.getName()) &&
-        this.getId() == newStore.getId();
     }
   }
 }
