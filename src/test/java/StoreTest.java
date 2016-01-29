@@ -19,4 +19,11 @@ public class StoreTest {
     newStore.save();
     assertTrue(newStore instanceof Store);
   }
+
+  @Test
+  public void store_getNameWorking_getName() {
+    Store newStore = new Store("Shoes and Junk, Inc.");
+    newStore.save();
+    assertEquals("Shoes and Junk, Inc.", newStore.getName());
+  }
 }
