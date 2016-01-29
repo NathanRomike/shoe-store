@@ -62,4 +62,12 @@ public class BrandTest {
     newBrand.update("glow");
     assertEquals("glow", newBrand.getName());
   }
+
+  @Test
+  public void brand_deleteMethodWorking_delete() {
+    Brand newBrand = new Brand("Glo");
+    newBrand.save();
+    newBrand.delete();
+    assertEquals(0, newBrand.all().size());
+  }
 }
