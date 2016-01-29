@@ -37,9 +37,7 @@ public class StoreTest {
   @Test
   public void store_equalsWorking_equals() {
     Store firstStore = new Store("Gloria's Shoes.");
-    firstStore.save();
     Store secondStore = new Store("Gloria's Shoes.");
-    secondStore.save();
-    assertTrue(secondStore.getName().equals(firstStore.getName()));
+    assertTrue(secondStore.equals(firstStore));
   }
 }
