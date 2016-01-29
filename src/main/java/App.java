@@ -21,7 +21,6 @@ public class App {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Brand brand = new Brand(request.queryParams("newBrand"));
       brand.save();
-      model.put("brandObject", brand);
       response.redirect("/");
       return null;
     });

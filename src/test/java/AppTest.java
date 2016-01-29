@@ -25,14 +25,22 @@ public class AppTest extends FluentTest {
   @Test
   public void rootTest() {
     goTo("http://localhost:4567/");
-    assertThat(pageSource()).contains("Welcome to your Shoe Empire!");
+    assertThat(pageSource()).contains("Welcome");
   }
 
   @Test
   public void newBrandInputOnHomepage() {
     goTo("http://localhost:4567/");
     fill("#newBrand").with("Glo");
-    submit("button");
+    submit("Brandbutton");
     assertThat(pageSource()).contains("Glo");
+  }
+
+  @Test
+  public void newStoreInputOnHomepage() {
+    goTo("http://localhost:4567/");
+    fill("#newStore").with("ABC Shoes");
+    submit("Storebutton");
+    assertThat(pageSource()).contains("ABC Shoes");
   }
 }
