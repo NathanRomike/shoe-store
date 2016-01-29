@@ -32,4 +32,11 @@ public class BrandTest {
     Brand [] allBrands = new Brand [] {firstBrand, secondBrand};
     assertTrue(Brand.all().containsAll(Arrays.asList(allBrands)));
   }
+
+  @Test
+  public void brand_getNameWorking_getName() {
+    Brand newBrand = new Brand("Glo");
+    newBrand.save();
+    assertEquals("Glo", newBrand.getName());
+  }
 }
