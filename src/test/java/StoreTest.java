@@ -18,7 +18,14 @@ public class StoreTest {
     Store [] allStores = new Store [] {firstStore, secondStore};
     assertTrue(Store.all().containsAll(Arrays.asList(allStores)));
   }
-  
+
+  @Test
+  public void store_getIdWorking_getId() {
+    Store newStore = new Store("Shoes and Junk!");
+    newStore.save();
+    assertEquals(newStore.getId(), newStore.getId());
+  }
+
   @Test
   public void store_emptyAtFirst_all() {
     assertEquals(Store.all().size(), 0);
@@ -29,13 +36,6 @@ public class StoreTest {
     Store newStore = new Store("Shoes and Junk!");
     newStore.save();
     assertTrue(newStore instanceof Store);
-  }
-
-  @Test
-  public void store_getIdWorking_getId() {
-    Store newStore = new Store("Shoes and Junk!");
-    newStore.save();
-    assertEquals(newStore.getId(), newStore.getId());
   }
 
   @Test
@@ -66,5 +66,13 @@ public class StoreTest {
     newStore.save();
     newStore.update("Gloria's Shoes and Junk, Inc.");
     assertEquals("Gloria's Shoes and Junk, Inc.", newStore.getName());
+  }
+
+  @Test
+  public void store_deleteMethodWorking_delete() {
+    Store newStore = new Store("Shoes and Junk, Inc.");
+    newStore.save();
+    newStore.delete();
+    assertEquals(0, newStore.all().size());
   }
 }
