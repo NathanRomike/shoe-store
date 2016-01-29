@@ -26,4 +26,13 @@ public class StoreTest {
     newStore.save();
     assertEquals("Shoes and Junk, Inc.", newStore.getName());
   }
+
+  @Test
+  public void store_equalsWorking_equals() {
+    Store firstStore = new Store("Gloria's Shoes.");
+    firstStore.save();
+    Store secondStore = new Store("Gloria's Shoes.");
+    secondStore.save();
+    assertTrue(firstStore.equals(secondStore));
+  }
 }
