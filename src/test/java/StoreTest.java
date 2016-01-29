@@ -40,4 +40,12 @@ public class StoreTest {
     Store secondStore = new Store("Gloria's Shoes.");
     assertTrue(secondStore.equals(firstStore));
   }
+
+  @Test
+  public void store_findMethodWorking_find() {
+    Store newStore = new Store("Shoes and Junk, Inc.");
+    newStore.save();
+    Store savedStore = Store.find(newStore.getId());
+    assertTrue(newStore.equals(savedStore));
+  }
 }
