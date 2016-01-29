@@ -4,6 +4,11 @@
   <div class="form-group">
     <h3>Add a shoe brand:</h3>
     <input type="text" class="form-control" name="newBrand" id="newBrand" placeholder="Nike?">
-    <button type="submit" name="newBrand" class="btn btn-primary" aria-label="Left Align" id="righ-float-button">
+    <button type="submit" class="btn btn-default" name="button">Add Brand</button>
   </div>
 </form>
+
+  <h3>Current Brands Stocked:</h3>
+  #foreach ($brand in $brands)
+    <a href="/Shoe/$brand.getId()">$brand.getName()</a>
+  #end

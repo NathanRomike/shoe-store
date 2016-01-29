@@ -31,8 +31,8 @@ public class AppTest extends FluentTest {
   @Test
   public void newBrandInputOnHomepage() {
     goTo("http://localhost:4567/");
-    fill(".newBrand").with("Glo");
-    submit("newBrand");
+    fill("#newBrand").with("Glo");
+    submit("button");
     assertThat(pageSource()).contains("Glo");
   }
 }

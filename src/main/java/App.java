@@ -12,8 +12,19 @@ public class App {
 
     get("/", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
+      model.put("brands", Brand.all());
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    post("/add-brand", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Brand brand = new Brand(request.queryParams("newBrand"));
+      brand.save();
+      model.put("brandObject", brand);
+      response.redirect("/");
+      return null;
+    });
+
   }
 }
