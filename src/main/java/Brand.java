@@ -22,5 +22,13 @@ public class Brand {
     }
   }
 
+  public static List<Brand> all() {
+    String sql = "SELECT id AS mId, brand_name AS mName FROM brands";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql)
+        .executeAndFetch(Brand.class);
+    }
+  }
+
 
 }

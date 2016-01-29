@@ -33,7 +33,7 @@ public class Store {
 
   public static List<Store> all() {
     String sql = "SELECT id AS mId, store_name AS mName FROM stores";
-    try (Connection con = DB.sql2o.open()) {
+    try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql)
         .executeAndFetch(Store.class);
     }
