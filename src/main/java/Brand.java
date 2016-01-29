@@ -8,9 +8,9 @@ public class Brand {
   private int mId;
   private String mName;
 
-  // public String getName() {
-  //   return mName;
-  // }
+  public String getName() {
+    return mName;
+  }
 
   public int getId() {
     return mId;
