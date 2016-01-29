@@ -32,16 +32,16 @@ public class Store {
     }
 
   public static List<Store> all() {
+    String sql = "SELECT id AS mId, store_name AS mName FROM stores";
     try (Connection con = DB.sql2o.open()) {
-      String sql = "SELECT id AS mId, store_name AS mName FROM stores";
       return con.createQuery(sql)
         .executeAndFetch(Store.class);
     }
   }
 
   public void save() {
+    String sql = "INSERT INTO stores(store_name) VALUES (:name)";
     try (Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO stores(store_name) VALUES (:name)";
       this.mId = (int) con.createQuery(sql, true)
         .addParameter("name", this.mName)
         .executeUpdate()
@@ -60,10 +60,19 @@ public class Store {
 
   public void update(String newName) {
     this.mName = newName;
+    String sql = "UPDATE stores SET store_name = :name WHERE id = :id";
     try(Connection con = DB.sql2o.open()) {
-      String sql = "UPDATE stores SET store_name = :name WHERE id = :id";
       con.createQuery(sql)
         .addParameter("name", newName)
+        .addParameter("id", mId)
+        .executeUpdate();
+    }
+  }
+
+  public void delete() {
+    String sql = "DELETE FROM stores WHERE id = :id";
+    try(Connection con = DB.sql2o.open()) {
+      con.createQuery(sql)
         .addParameter("id", mId)
         .executeUpdate();
     }

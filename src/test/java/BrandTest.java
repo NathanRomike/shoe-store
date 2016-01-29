@@ -8,8 +8,10 @@ public class BrandTest {
   @Rule
   public DatabaseRule database = new DatabaseRule();
 
-  // @Test
-  // public void all_emptyAtFirst() {
-  //   assertEquals(Brand.all().size(), 0);
-  // }
+  @Test
+  public void brand_createNewBrandWorking_save() {
+    Brand newBrand = new Brand("Glo");
+    newBrand.save();
+    assertTrue(newBrand instanceof Brand);
+  }
 }
