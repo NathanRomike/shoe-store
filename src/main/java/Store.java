@@ -48,4 +48,13 @@ public class Store {
         .getKey();
     }
   }
+
+  public static Store find(int id) {
+    String sql = "SELECT id AS mId, store_name AS mName FROM stores WHERE id = :id";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetchFirst(Store.class);
+    }
+  }
 }
