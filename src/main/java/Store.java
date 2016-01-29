@@ -8,6 +8,10 @@ public class Store {
   private int mId;
   private String mName;
 
+  public String getName() {
+    return mName;
+  }
+
   public Store (String name) {
     this.mName = name;
   }
