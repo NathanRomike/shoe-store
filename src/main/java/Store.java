@@ -21,15 +21,15 @@ public class Store {
   }
 
   @Override
-    public boolean equals(Object otherStore) {
-      if (!(otherStore instanceof Store)) {
-        return false;
-      } else {
-        Store newStore = (Store) otherStore;
-        return this.getName().equals(newStore.getName()) &&
-               this.getId() == newStore.getId();
-      }
+  public boolean equals(Object otherStore) {
+    if (!(otherStore instanceof Store)) {
+      return false;
+    } else {
+      Store newStore = (Store) otherStore;
+      return this.getName().equals(newStore.getName()) &&
+             this.getId() == newStore.getId();
     }
+  }
 
   public static List<Store> all() {
     String sql = "SELECT id AS mId, store_name AS mName FROM stores";

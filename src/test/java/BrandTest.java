@@ -19,7 +19,7 @@ public class BrandTest {
   @Test
   public void brand_equalsMethodWorking_equals() {
     Brand firstBrand = new Brand("Glo");
-    Brand secondBrand = new Brand("Yo");
+    Brand secondBrand = new Brand("Glo");
     assertTrue(firstBrand.equals(secondBrand));
   }
 

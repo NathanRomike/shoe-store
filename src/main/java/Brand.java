@@ -8,8 +8,27 @@ public class Brand {
   private int mId;
   private String mName;
 
+  public String getName() {
+    return mName;
+  }
+
+  public int getId() {
+    return mId;
+  }
+
   public Brand (String name) {
     this.mName = name;
+  }
+
+  @Override
+  public boolean equals(Object otherBrand) {
+    if (!(otherBrand instanceof Brand)) {
+      return false;
+    } else {
+      Brand newBrand = (Brand) otherBrand;
+      return this.getName().equals(newBrand.getName()) &&
+             this.getId() == newBrand.getId();
+    }
   }
 
   public void save() {
