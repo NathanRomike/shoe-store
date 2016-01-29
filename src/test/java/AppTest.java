@@ -22,11 +22,17 @@ public class AppTest extends FluentTest {
   @Rule
   public DatabaseRule database = new DatabaseRule();
 
-  // @Test
-  //     public void rootTest() {
-  //       goTo("http://localhost:4567/");
-  //       assertThat(pageSource()).contains("University Registrar");
-  //     }
+  @Test
+  public void rootTest() {
+    goTo("http://localhost:4567/");
+    assertThat(pageSource()).contains("Welcome to your Shoe Empire!");
+  }
 
-  
+  @Test
+  public void newBrandInputOnHomepage() {
+    goTo("http://localhost:4567/");
+    fill(".newBrand").with("Glo");
+    submit("newBrand");
+    assertThat(pageSource()).contains("Glo");
+  }
 }
