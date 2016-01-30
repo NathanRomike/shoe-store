@@ -4,6 +4,8 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.junit.Rule;
+import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.fluentlenium.core.filter.FilterConstructor.*;
@@ -53,5 +55,17 @@ public class AppTest extends FluentTest {
     brand.assign(store);
     goTo("http://localhost:4567/Stores/" + store.getId());
     assertThat(pageSource()).contains("Glos");
+  }
+
+  @Test
+  public void removeOptionOnStorePageWorks() {
+    Store store = new Store("Gloria's Shoes");
+    store.save();
+    Brand brand = new Brand("Glos");
+    brand.save();
+    brand.assign(store);
+    goTo("http://localhost:4567/Stores/" + store.getId());
+    fillSelect("removebrandselect").withText("Glos");
+    assertEquals(pageSource(), not("Glos"));
   }
 }
