@@ -1,5 +1,5 @@
 <h1>Welcome</h1>
-<h2>to your Shoe Empire!</h2>
+<h2>To Shoe Empire!</h2>
 <br>
 <form action="/add-brand" method="post">
   <div class="form-group">
@@ -24,7 +24,7 @@
   </div>
 </form>
 #if ($brands)
-  <p>Current Brands Stocked: <small>(Stores Stocked)</small></p>
+  <p>Brands Stocked: <small>(Stores Stocked)</small></p>
     <ul class="list-group">
       #foreach ($brand in $brands)
         <a class="list-group-item" href="/Brands/$brand.getId()">$brand.getName()<span class="badge">$brand.getStores().size()</span>
@@ -33,7 +33,7 @@
   </ul>
 #end
 #if ($stores)
-  <p>Your Stores: <small>(Current Stock)</small></p>
+  <p>Stores: <small>(Current Stock)</small></p>
     #foreach ($store in $stores)
       <a class="list-group-item" href="/Stores/$store.getId()">$store.getName()<span class="badge">$store.getBrands().size()</span></a>
     #end

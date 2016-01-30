@@ -78,13 +78,6 @@ public class StoreTest {
     assertEquals(0, newStore.getBrands().size());
   }
 
-  // @Test
-  // public void store_searchBrandToStore_search() {
-  //   Store store = new Store("Gloria's Shoes.");
-  //   store.save();
-  //   assertEquals(store, store.search("Gloria's Shoes."));
-  // }
-
   @Test
   public void store_assignBrandToStore_assign() {
     Store store = new Store("Gloria's Shoes.");
@@ -93,5 +86,16 @@ public class StoreTest {
     brand.save();
     store.assign(brand);
     assertEquals(1, store.getBrands().size());
+  }
+
+  @Test
+  public void store_removesBrandFromStore_remove() {
+    Store store = new Store("Gloria's Shoes.");
+    store.save();
+    Brand brand = new Brand("Glo");
+    brand.save();
+    store.assign(brand);
+    store.remove(brand);
+    assertEquals(0, store.getBrands().size());
   }
 }

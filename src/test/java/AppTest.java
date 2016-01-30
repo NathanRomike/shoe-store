@@ -65,7 +65,8 @@ public class AppTest extends FluentTest {
     brand.save();
     brand.assign(store);
     goTo("http://localhost:4567/Stores/" + store.getId());
-    fillSelect("removebrandselect").withText("Glos");
+    fillSelect("#removebrandselect").withText("Glos");
+    submit("#remove-button");
     assertEquals(pageSource(), not("Glos"));
   }
 }

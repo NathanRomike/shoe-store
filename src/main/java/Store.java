@@ -99,6 +99,15 @@ public class Store {
     }
   }
 
+  public void remove(Brand brand) {
+    String sql = "DELETE FROM store_brand WHERE brand_id = :brandId";
+    try(Connection con = DB.sql2o.open()) {
+      con.createQuery(sql)
+        .addParameter("brandId", brand.getId())
+        .executeUpdate();
+    }
+  }
+
   public static List<Store> search(String searchInput) {
     String sql = "SELECT stores.id AS mId, stores.store_name AS mName FROM stores " +
     "INNER JOIN store_brand AS s_b ON stores.id = s_b.store_id " +
