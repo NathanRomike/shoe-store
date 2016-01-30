@@ -1,3 +1,60 @@
 body {
-  padding-bottom: 70px;
+  height: 100%;
+  background: url("http://c2.staticflickr.com/4/3034/2620250416_b3a8bdb6c5_b.jpg") no-repeat center center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+}
+
+.header {
+  font-variant: inherit;
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+}
+
+.navbar {
+  text-align: center;
+}
+
+.white {
+  color: white;
+}
+
+.center-text {
+  width: auto;
+}
+
+.small {
+  float: right;
+  font-size: 12px;
+}
+
+nav {
+  height: 20px;
+}
+
+.info-wrap {
+  position: relative;
+}
+
+.info-wrap .info-description {
+  color: white;
+  display: none;
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  right: 5%;
+  padding: .5em;
+}
+
+.info-wrap:hover .info-description {
+  display: block;
 }

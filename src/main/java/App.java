@@ -34,7 +34,7 @@ public class App {
       return null;
     });
 
-    get("/Stores/:id", (request, response) -> {
+    get("/stores/:id", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Store store = Store.find(Integer.parseInt(request.params("id")));
       model.put("store", store);
@@ -44,7 +44,7 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    post("/Stores/:id/assignbrand", (request, response) -> {
+    post("/stores/:id/assignbrand", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Store store = Store.find(Integer.parseInt(request.params("id")));
       Brand brand = Brand.find(Integer.parseInt(request.queryParams("brandSelection")));
@@ -53,7 +53,7 @@ public class App {
       return null;
     });
 
-    post("/Stores/:id/removebrand", (request, response) -> {
+    post("/stores/:id/removebrand", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Store store = Store.find(Integer.parseInt(request.params("id")));
       Brand brand = Brand.find(Integer.parseInt(request.queryParams("removebrandselect")));

@@ -4,21 +4,44 @@
     <title>Shoe Manager</title>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
     <link rel="stylesheet" href="/css/styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Raleway:600' rel='stylesheet' type='text/css'>
   </head>
   <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
-        <a href="/" type="button" class="btn btn-inverse navbar-btn">Home</a>
-        <a href="/stores" type="button" class="btn btn-inverse navbar-btn">Stores</a>
-        <a href="/brands" type="button" class="btn btn-inverse navbar-btn">Brands</a>
+        <a href="/" type="button" class="btn btn-inverse navbar-btn btn-lg">
+          <div class="info-wrap">
+            <span class="glyphicon glyphicon-home"></span>
+              <div class="info-description">
+                <p>Home</p>
+              </div>
+          </div>
+        </a>
+        <a href="/stores" type="button" class="btn btn-inverse navbar-btn btn-lg">
+          <div class="info-wrap">
+            <span class="glyphicon glyphicon-briefcase"></span>
+              <div class="info-description">
+                <p>Stores</p>
+              </div>
+          </div>
+        </a>
+        <a href="/brands" type="button" class="btn btn-inverse navbar-btn btn-lg">
+          <div class="info-wrap">
+            <span class="glyphicon glyphicon-tags"></span>
+              <div class="info-description">
+                <p>Brands</p>
+              </div>
+          </div>
+        </a>
       </div>
     </nav>
+    <br>
+    <br>
+    <br>
     <div class="container">
       <br>
-      <div class="jumbotron">
-
+      <div class="jumbotron center">
         #parse($template)
-
       </div>
     </div>
   </body>

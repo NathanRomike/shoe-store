@@ -1,11 +1,11 @@
-<h1>Welcome</h1>
-<h2>To Shoe Empire!</h2>
+<h1 class="center-text header">Welcome</h1>
+<h2 class="center-text header">Shoe Franchisor</h2>
 <br>
 <form action="/add-brand" method="post">
   <div class="form-group">
-    <p>Add a shoe brand:</p>
+    <p class="center-text">Add a shoe brand:</p>
     <div class="input-group">
-      <input type="text" class="form-control" name="newBrand" id="newBrand" placeholder="Converse">
+      <input type="text" class="form-control" name="newBrand" id="newBrand" placeholder="Old Balance">
       <span class="input-group-btn">
         <button type="submit" class="btn btn-default" name="Brandbutton">Add Brand</button>
       </span>
@@ -14,9 +14,9 @@
 </form>
 <form action="/add-store" method="post">
   <div class="form-group">
-    <p>Add a new store:</p>
+    <p class="center-text">Add a new store:</p>
     <div class="input-group">
-      <input type="text" class="form-control" name="newStore" id="newStore" placeholder="Shoe Store">
+      <input type="text" class="form-control" name="newStore" id="newStore" placeholder="Foot Blocker">
       <span class="input-group-btn">
         <button type="submit" class="btn btn-default" name="Storebutton">Add Store</button>
       </span>
@@ -24,17 +24,17 @@
   </div>
 </form>
 #if ($brands)
-  <p>Brands Stocked: <small>(Stores Stocked)</small></p>
+  <p>Brands: <span class="small">(Stores Stocked)</span></p>
     <ul class="list-group">
       #foreach ($brand in $brands)
-        <a class="list-group-item" href="/Brands/$brand.getId()">$brand.getName()<span class="badge">$brand.getStores().size()</span>
+        <a class="list-group-item" href="/brands/$brand.getId()">$brand.getName()<span class="badge">$brand.getStores().size()</span>
         </a>
       #end
   </ul>
 #end
 #if ($stores)
-  <p>Stores: <small>(Current Stock)</small></p>
+  <p>Stores: <span class="small">(Brands Stocked)</span></p>
     #foreach ($store in $stores)
-      <a class="list-group-item" href="/Stores/$store.getId()">$store.getName()<span class="badge">$store.getBrands().size()</span></a>
+      <a class="list-group-item" href="/stores/$store.getId()">$store.getName()<span class="badge">$store.getBrands().size()</span></a>
     #end
 #end
