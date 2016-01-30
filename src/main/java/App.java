@@ -34,5 +34,23 @@ public class App {
       return null;
     });
 
+    get("/Stores/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Store store = Store.find(Integer.parseInt(request.params("id")));
+      model.put("store", store);
+      model.put("stores", Store.class);
+      model.put("brands", Brand.class);
+      model.put("template", "templates/store.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/Stores/:id/assignbrand", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Store store = Store.find(Integer.parseInt(request.params("id")));
+      Brand brand = Brand.find(Integer.parseInt(request.queryParams("brandSelection")));
+      store.assign(brand);
+      response.redirect("/Stores/" + store.getId());
+      return null;
+    });
   }
 }

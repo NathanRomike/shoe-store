@@ -51,8 +51,7 @@ public class AppTest extends FluentTest {
     Brand brand = new Brand("Glos");
     brand.save();
     brand.assign(store);
-    goTo("http://localhost:4567/");
-    click("a", withText("Gloria's Shoes"));
+    goTo("http://localhost:4567/Stores/" + store.getId());
     assertThat(pageSource()).contains("Glos");
   }
 }

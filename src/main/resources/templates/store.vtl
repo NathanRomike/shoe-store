@@ -1,0 +1,15 @@
+<h1>$store.getName()</h1>
+
+<p>Assign Brands to this store:</p>
+<form action="/Stores/$store.getId()/assignbrand" method="post">
+  <select id="brandSelection" name="brandSelection" type="text">
+    #foreach ($brand in $brands.all())
+      <option value="$brand.getId()">$brand.getName()</option>
+    #end
+  </select>
+  <button type="submit" class="btn btn-default" name="button">Add Brand</button>
+</form>
+<br>
+#foreach ($brand in $store.getBrands())
+  <p>$brand.getName()</p>
+#end
