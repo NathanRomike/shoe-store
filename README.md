@@ -1,6 +1,6 @@
 # Shoe Store - Java
 
-##### This page is to test my knowledge of advanced database usage. 1.29.2016.
+##### 1.29.2016.
 
 #### By **Nathan Romike**
 
