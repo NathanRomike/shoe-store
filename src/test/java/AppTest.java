@@ -69,4 +69,16 @@ public class AppTest extends FluentTest {
     submit("assign-button");
     assertThat(pageSource()).contains("Gloria's Shoes");
   }
+
+  @Test
+  public void updateElementOnHomePageWorking() {
+    Store store = new Store("Gloria's Shoes");
+    store.save();
+    goTo("http://localhost:4567/");
+    fillSelect("#storeUpdateSelection").withText("Gloria's Shoes");
+    fill("#update-store").with("Glo's Feet");
+    submit("store-update-button");
+    assertThat(pageSource()).contains("Glo's Feet");
+  }
+
 }

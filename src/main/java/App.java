@@ -20,7 +20,6 @@ public class App {
 
     post("/add-brand", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
-      boolean duplicate = false;
       Brand brand = new Brand(request.queryParams("newBrand"));
       brand.save();
       response.redirect("/");
@@ -31,6 +30,15 @@ public class App {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Store store = new Store(request.queryParams("newStore"));
       store.save();
+      response.redirect("/");
+      return null;
+    });
+
+    post("/update-store", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Store store = Store.find(Integer.parseInt(request.queryParams("storeUpdateSelection")));
+      String storeUpdate = request.queryParams("update-store");
+      store.update(storeUpdate);
       response.redirect("/");
       return null;
     });
@@ -87,7 +95,7 @@ public class App {
       Brand brand = Brand.find(Integer.parseInt(request.params("id")));
       Store store = Store.find(Integer.parseInt(request.queryParams("removestoreselect")));
       brand.remove(store);
-      response.redirect("/brands" + brand.getId());
+      response.redirect("/brands/" + brand.getId());
       return null;
     });
   }
