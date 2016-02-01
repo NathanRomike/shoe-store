@@ -80,5 +80,4 @@ public class AppTest extends FluentTest {
     submit("store-update-button");
     assertThat(pageSource()).contains("Glo's Feet");
   }
-
 }

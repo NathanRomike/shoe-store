@@ -1,0 +1,22 @@
+#if ($brands.size() > 0)
+  <form action="/delete-brand" method="post">
+    <div class="form-group">
+      <p class="center-text">Delete brand:</p>
+      <select id="brandDeleteSelection" name="brandDeleteSelection" type="text">
+        #foreach ($brand in $brands)
+          <option value="$brand.getId()">$brand.getName()</option>
+        #end
+      </select>
+      <button type="submit" class="btn btn-danger" name="brand-delete-button">Delete</button>
+    </div>
+  </form>
+  <p>Brands: <span class="small">(Stores Stocked)</span></p>
+    <ul class="list-group">
+      #foreach ($brand in $brands)
+        <a class="list-group-item" href="/brands/$brand.getId()">$brand.getName()<span class="badge">$brand.getStores().size()</span>
+        </a>
+      #end
+  </ul>
+#else
+  <p>You have no brand inventory, call <a href="http://about.nike.com/pages/executives">Phil!</a></p>
+#end

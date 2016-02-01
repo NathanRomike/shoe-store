@@ -43,6 +43,36 @@ public class App {
       return null;
     });
 
+    post("/delete-store", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Store store = Store.find(Integer.parseInt(request.queryParams("storeDeleteSelection")));
+      store.delete();
+      response.redirect("/");
+      return null;
+    });
+
+    get("/stores", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      model.put("stores", Store.all());
+      model.put("template", "templates/stores.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/brands", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      model.put("brands", Brand.all());
+      model.put("template", "templates/brands.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/delete-brand", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Brand brand = Brand.find(Integer.parseInt(request.queryParams("brandDeleteSelection")));
+      brand.delete();
+      response.redirect("/brands");
+      return null;
+    });
+
     get("/stores/:id", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Store store = Store.find(Integer.parseInt(request.params("id")));

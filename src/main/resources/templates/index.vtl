@@ -5,11 +5,10 @@
   <div class="form-group">
     <p class="center-text">Add a shoe brand:</p>
     <div class="input-group">
-        <input type="text" class="form-control" name="newBrand" id="newBrand" placeholder="Old Balance">
-        <span class="input-group-btn">
-          <button type="submit" class="btn btn-default" name="Brandbutton">Add Brand</button>
-        </span>
-
+      <input type="text" class="form-control" name="newBrand" id="newBrand" placeholder="Old Balance">
+      <span class="input-group-btn">
+        <button type="submit" class="btn btn-default" name="Brandbutton">Add Brand</button>
+      </span>
     </div>
   </div>
 </form>
@@ -24,38 +23,50 @@
     </div>
   </div>
 </form>
-<form action="/update-store" method="post">
-  <div class="form-group">
-    <p class="center-text">Edit store:</p>
-    <select id="storeUpdateSelection" name="storeUpdateSelection" type="text">
-      #foreach ($store in $stores)
-      <option value="$store.getId()">$store.getName()</option>
-      #end
-    </select>
-    <div class="input-group">
-      <input type="text" class="form-control" name="update-store" id="update-store" placeholder="Boot Blocker">
-      <span class="input-group-btn">
-        <button type="submit" class="btn btn-default" name="store-update-button">Update</button>
-      </span>
+#if ($stores.size() > 0)
+  <form action="/update-store" method="post">
+    <div class="form-group">
+      <p class="center-text">Edit store:</p>
+      <select id="storeUpdateSelection" name="storeUpdateSelection" type="text">
+        #foreach ($store in $stores)
+        <option value="$store.getId()">$store.getName()</option>
+        #end
+      </select>
+      <div class="input-group">
+        <input type="text" class="form-control" name="update-store" id="update-store" placeholder="Boot Blocker">
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-default" name="store-update-button">Update</button>
+        </span>
+      </div>
     </div>
-  </div>
-</form>
-#if ($brands.size() >= 1)
-  <p>Brands: <span class="small">(Stores Stocked)</span></p>
-    <ul class="list-group">
-      #foreach ($brand in $brands)
-        <a class="list-group-item" href="/brands/$brand.getId()">$brand.getName()<span class="badge">$brand.getStores().size()</span>
-        </a>
-      #end
-  </ul>
-#else
-  <p>You have no brand inventory, call <a href="http://about.nike.com/pages/executives">Phil!</a></p>
-#end
-#if ($stores.size() >= 1)
+  </form>
+  <form action="/delete-store" method="post">
+    <div class="form-group">
+      <p class="center-text">Delete store:</p>
+      <select id="storeDeleteSelection" name="storeDeleteSelection" type="text">
+        #foreach ($store in $stores)
+        <option value="$store.getId()">$store.getName()</option>
+        #end
+      </select>
+      <button type="submit" class="btn btn-danger" name="store-delete-button">Delete</button>
+    </div>
+  </form>
   <p>Stores: <span class="small">(Brands Stocked)</span></p>
     #foreach ($store in $stores)
       <a class="list-group-item" href="/stores/$store.getId()">$store.getName()<span class="badge">$store.getBrands().size()</span></a>
     #end
 #else
   <p>You have no stores, get out there and sell some <a href="http://www.entrepreneur.com/article/204998">franchise!</a></p>
+#end
+#if ($brands.size() > 0)
+  <p>Brands: <span class="small">(Stores Stocked)</span></p>
+  <ul class="list-group">
+    #foreach ($brand in $brands)
+    <a class="list-group-item" href="/brands/$brand.getId()">$brand.getName()<span class="badge">$brand.getStores().size()</span>
+    </a>
+    #end
+  </ul>
+#else
+<br>
+<p>You have no brand inventory, call <a href="http://about.nike.com/pages/executives">Phil!</a></p>
 #end

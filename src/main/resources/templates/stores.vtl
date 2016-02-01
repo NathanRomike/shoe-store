@@ -1,0 +1,8 @@
+#if ($stores.size() >= 1)
+  <p>Stores: <span class="small">(Brands Stocked)</span></p>
+    #foreach ($store in $stores)
+      <a class="list-group-item" href="/stores/$store.getId()">$store.getName()<span class="badge">$store.getBrands().size()</span></a>
+    #end
+#else
+  <p>You have no stores, get out there and sell some <a href="http://www.entrepreneur.com/article/204998">franchise!</a></p>
+#end
