@@ -8,6 +8,7 @@ import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.fluentlenium.assertj.FluentLeniumAssertions.assertThat;
 import static org.fluentlenium.core.filter.FilterConstructor.*;
 
 public class AppTest extends FluentTest {
@@ -47,26 +48,25 @@ public class AppTest extends FluentTest {
   }
 
   @Test
-  public void specificStorePageListsBrandsInStore() {
+  public void assignOptionOnStorePageWorking() {
     Store store = new Store("Gloria's Shoes");
     store.save();
     Brand brand = new Brand("Glos");
     brand.save();
     brand.assign(store);
-    goTo("http://localhost:4567/Stores/" + store.getId());
+    goTo("http://localhost:4567/stores/" + store.getId());
     assertThat(pageSource()).contains("Glos");
   }
 
   @Test
-  public void removeOptionOnStorePageWorks() {
-    Store store = new Store("Gloria's Shoes");
-    store.save();
+  public void brandPageAssignsBrandToStore() {
     Brand brand = new Brand("Glos");
     brand.save();
-    brand.assign(store);
-    goTo("http://localhost:4567/Stores/" + store.getId());
-    fillSelect("#removebrandselect").withText("Glos");
-    submit("#remove-button");
-    assertEquals(pageSource(), not("Glos"));
+    Store store = new Store("Gloria's Shoes");
+    store.save();
+    goTo("http://localhost:4567/brands/" + brand.getId());
+    fillSelect("#storeSelection").withText("Gloria's Shoes");
+    submit("assign-button");
+    assertThat(pageSource()).contains("Gloria's Shoes");
   }
 }

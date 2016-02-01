@@ -20,6 +20,7 @@ public class App {
 
     post("/add-brand", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
+      boolean duplicate = false;
       Brand brand = new Brand(request.queryParams("newBrand"));
       brand.save();
       response.redirect("/");
@@ -49,7 +50,7 @@ public class App {
       Store store = Store.find(Integer.parseInt(request.params("id")));
       Brand brand = Brand.find(Integer.parseInt(request.queryParams("brandSelection")));
       store.assign(brand);
-      response.redirect("/Stores/" + store.getId());
+      response.redirect("/stores/" + store.getId());
       return null;
     });
 
@@ -58,8 +59,28 @@ public class App {
       Store store = Store.find(Integer.parseInt(request.params("id")));
       Brand brand = Brand.find(Integer.parseInt(request.queryParams("removebrandselect")));
       store.remove(brand);
-      response.redirect("/Stores/" + store.getId());
+      response.redirect("/stores/" + store.getId());
       return null;
     });
+
+    get("/brands/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Brand brand = Brand.find(Integer.parseInt(request.params("id")));
+      model.put("brand", brand);
+      model.put("brands", Brand.class);
+      model.put("stores", Store.class);
+      model.put("template", "templates/brand.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("brands/:id/assignstore", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Brand brand = Brand.find(Integer.parseInt(request.params("id")));
+      Store store = Store.find(Integer.parseInt(request.queryParams("storeSelection")));
+      brand.assign(store);
+      response.redirect("/brands/" + brand.getId());
+      return null;
+    });
+
   }
 }
