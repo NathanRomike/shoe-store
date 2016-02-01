@@ -82,5 +82,13 @@ public class App {
       return null;
     });
 
+    post("/brands/:id/removestore", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Brand brand = Brand.find(Integer.parseInt(request.params("id")));
+      Store store = Store.find(Integer.parseInt(request.queryParams("removestoreselect")));
+      brand.remove(store);
+      response.redirect("/brands" + brand.getId());
+      return null;
+    });
   }
 }

@@ -98,4 +98,13 @@ public class Brand {
         .executeUpdate();
     }
   }
+
+  public void remove(Store store) {
+    String sql = "DELETE FROM store_brand WHERE store_id = :storeId";
+    try(Connection con = DB.sql2o.open()) {
+      con.createQuery(sql)
+        .addParameter("storeId", store.getId())
+        .executeUpdate();
+    }
+  }
 }
