@@ -13,9 +13,9 @@
 * Clone repository to local machine.
 * Start the database system with terminal command `$ postgres`, leave this window open and runnining.
 * In a new terminal window run `$ psql`
-* Within psql enter `=# CREATE DATABASE hair_salon;`
-* In a new terminal within the hair_salon directory enter `$ psql hair_salon < hair_salon.sql`
-* Return to the terminal running psql and enter `=# CREATE DATABASE hair_salon_test WITH TEMPLATE hair_salon;`
+* Within psql enter `=# CREATE DATABASE shoe_store;`
+* In a new terminal within the shoe_store directory enter `$ psql shoe_store < shoe_store.sql`
+* Return to the terminal running psql and enter `=# CREATE DATABASE shoe_store_test WITH TEMPLATE shoe_store;`
 * Compile the web application in terminal by entering `$ gradle run`, and navigate to [localhost](http://localhost:4567/).
 
 ## Technologies Used
